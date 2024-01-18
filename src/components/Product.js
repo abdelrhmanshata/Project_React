@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addCart } from "../store/slices/cart";
+import Rating from "./Rating";
 
 export default function Product({ data }) {
   const navigate = useNavigate();
@@ -59,6 +60,9 @@ export default function Product({ data }) {
       <div className="row overflow-hidden" style={{ height: "50px" }}>
         <p>{data.description}</p>
       </div>
+
+      {/* Rating */}
+      <Rating rating={data.rating} />
 
       {/* Add to Cart */}
       <div className="mt-2" style={{ height: "50px" }}>
