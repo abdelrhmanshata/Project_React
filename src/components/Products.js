@@ -16,8 +16,8 @@ export default function Products() {
   return (
     <>
       <div className="row d-flex justify-content-evenly align-items-center flex-wrap">
-        {products.map((product) => (
-          <Product data={product} />
+        {products.map((product, index) => (
+          <Product key={index} data={product} />
         ))}
       </div>
     </>
