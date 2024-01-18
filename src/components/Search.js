@@ -1,19 +1,24 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 export default function Search() {
+  const [productName, setProductName] = useState("");
+  const navigate = useNavigate();
   return (
     <div>
       <h5>Welcome to our shopping website ,start browsing....</h5>
-      <div className="d-flex flex-row my-3">
+      <div className="d-flex flex-md-row flex-column my-3 gap-2">
         <input
-          //   value={searchMovie}
+          value={productName}
           type="text"
-          class="form-control me-5 py-2"
+          className="form-control me-5 py-2"
           placeholder="Search and explore ..."
-          //   onChange={(e) => setSearchMovie(e.target.value)}
+          onChange={(e) => setProductName(e.target.value)}
         />
         <button
-          class="btn text-white bg-primary rounded-2 px-5 py-2 "
+          className="btn text-white bg-primary rounded-2 px-5 py-2 "
           type="button"
-          //   onClick={() => navigate(`/search-movies/${searchMovie}`)}
+          onClick={() => navigate(`/search-products/${productName}`)}
         >
           Search
         </button>
