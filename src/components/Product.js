@@ -18,8 +18,8 @@ export default function Product({ data }) {
   }
   return (
     <div className="p-3 col-lg-3 col-sm-6">
-      <div className="position-relative">
-        <div style={{ width: "250px", height: "250px" }}>
+      <div className="d-flex position-relative ">
+        <div className="d-flex" style={{ width: "250px", height: "250px" }}>
           <img
             className="rounded"
             src={data.thumbnail}
@@ -43,28 +43,34 @@ export default function Product({ data }) {
           {data.stock > 40 ? "In stock" : "Out of stock"}
         </div>
       </div>
-      <div className="d-flex mt-3">
-        {/* title */}
-        <h3 className="flex-fill">{data.title}</h3>
 
-        <h5 className="text-end ">
-          ${/* price */}
-          {data.price}
+      <div className="row mt-3 overflow-hidden " style={{ height: "50px" }}>
+        {/* Title */}
+        <h4 className="col-9 overflow-hidden" style={{ whiteSpace: "nowrap" }}>
+          {data.title}
+        </h4>
+        {/* Price */}
+        <h5 className="col-3 text-end ">
+          ${data.price}
           <sup>.00</sup>
         </h5>
       </div>
       {/* Description */}
-      <p>{data.description}</p>
-      {/* Rating */}
+      <div className="row overflow-hidden" style={{ height: "50px" }}>
+        <p>{data.description}</p>
+      </div>
 
-      <button
-        className="rounded-pill px-3"
-        onClick={() => {
-          addProduct(data);
-        }}
-      >
-        Add to Cart
-      </button>
+      {/* Add to Cart */}
+      <div className="mt-2" style={{ height: "50px" }}>
+        <button
+          className="rounded-pill px-3"
+          onClick={() => {
+            addProduct(data);
+          }}
+        >
+          Add to Cart
+        </button>
+      </div>
     </div>
   );
 }
