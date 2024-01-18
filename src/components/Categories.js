@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { axiosInstance } from "../api/config";
 
-export default function Categories() {
+export default function Categories({ categorySelected }) {
   const [categoriesList, setCategoriesList] = useState([]);
   const [categoriesSelected, setCategoriesSelected] = useState(0);
   const [categoriesStart, setCategoriesStart] = useState(0);
@@ -17,11 +17,15 @@ export default function Categories() {
       .catch((err) => console.log(err));
   }, []);
 
+  const getCategorySelected = (index) => {
+    categorySelected(categoriesList[index]);
+  };
+
   return (
     <div>
       <h5>Categories</h5>
 
-      <div className="d-flex align-items-center">
+      <div className="d-flex align-items-center justify-content-center">
         <div className="text-center" style={{ width: "5%" }}>
           <FaChevronLeft
             className="fs-3 "
@@ -30,15 +34,15 @@ export default function Categories() {
             }}
             onClick={() => {
               if (categoriesStart !== 0) {
-                setCategoriesStart(categoriesStart - 1);
-                setCategoriesEnd(categoriesEnd - 1);
+                setCategoriesStart(categoriesStart - 3);
+                setCategoriesEnd(categoriesEnd - 3);
               }
             }}
           />
         </div>
 
         <div className="text-center overflow-hidden" style={{ width: "90%" }}>
-          <div className="d-flex flex-row my-3 gap-3 align-items-center">
+          <div className="d-flex flex-row my-3 gap-3 align-items-center justify-content-center">
             {categoriesList.map((category, index) =>
               index >= categoriesStart && index < categoriesEnd ? (
                 <button
@@ -51,7 +55,10 @@ export default function Categories() {
                     color: index === categoriesSelected ? "#cccccc" : "#0d6efd",
                   }}
                   type="button"
-                  onClick={() => setCategoriesSelected(index)}
+                  onClick={() => {
+                    setCategoriesSelected(index);
+                    getCategorySelected(index);
+                  }}
                 >
                   {category}
                 </button>
@@ -69,8 +76,8 @@ export default function Categories() {
             }}
             onClick={() => {
               if (categoriesEnd !== categoriesList.length + 1) {
-                setCategoriesStart(categoriesStart + 1);
-                setCategoriesEnd(categoriesEnd + 1);
+                setCategoriesStart(categoriesStart + 3);
+                setCategoriesEnd(categoriesEnd + 3);
               }
             }}
           />
