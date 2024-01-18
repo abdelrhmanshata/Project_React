@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { axiosInstance } from "../api/config";
+import ProductsContext from "../context/products";
 
-export default function Categories({ categorySelected }) {
+export default function Categories() {
+  // use Context to get Category Name & CurrentPage
+  const { setProductsDetails } = useContext(ProductsContext);
+
   const [categoriesList, setCategoriesList] = useState([]);
   const [categoriesSelected, setCategoriesSelected] = useState(0);
   const [categoriesStart, setCategoriesStart] = useState(0);
@@ -18,7 +22,10 @@ export default function Categories({ categorySelected }) {
   }, []);
 
   const getCategorySelected = (index) => {
-    categorySelected(categoriesList[index]);
+    setProductsDetails({
+      category: categoriesList[index],
+      page: 1,
+    });
   };
 
   return (
@@ -42,11 +49,12 @@ export default function Categories({ categorySelected }) {
         </div>
 
         <div className="text-center overflow-hidden" style={{ width: "90%" }}>
-          <div className="d-flex flex-row my-3 gap-3 align-items-center justify-content-center">
+          <div className="d-flex flex-lg-row flex-column my-3 gap-3 align-items-center justify-content-center">
             {categoriesList.map((category, index) =>
               index >= categoriesStart && index < categoriesEnd ? (
                 <button
-                  class="btn rounded-5 px-5"
+                  key={index}
+                  className="btn rounded-5 px-5"
                   style={{
                     height: "50px",
                     whiteSpace: "nowrap",

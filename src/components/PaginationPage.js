@@ -1,25 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Pagination } from "react-bootstrap";
 import { axiosInstance } from "../api/config";
+import ProductsContext from "../context/products";
 
-export default function PaginationPage({ categorySelected }) {
+export default function PaginationPage() {
+  const { productsDetails, setProductsDetails } = useContext(ProductsContext);
+
   const [totalProduct, setTotalProduct] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     axiosInstance
-      .get(categorySelected === "all" ? `` : `category/${categorySelected}`)
+      .get(productsDetails.category === "all" ? `` : `category/${productsDetails.category}`)
       .then((res) => {
         setTotalProduct(res.data.total);
       })
       .catch((err) => console.log(err));
-  }, [categorySelected]);
+  }, [productsDetails.category]);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
-    // paginationFun(pageNumber);
-    console.log(pageNumber);
+    setProductsDetails({
+      category: productsDetails.category,
+      page: pageNumber,
+    });
   };
+
   return (
     <div className="d-flex my-5 align-items-center justify-content-center ">
       <Pagination>
