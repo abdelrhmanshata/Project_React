@@ -2,6 +2,7 @@ import { useState } from "react";
 import Search from "../components/Search";
 import Categories from "../components/Categories";
 import PaginationPage from "../components/PaginationPage";
+import Products from "../components/Products";
 export default function ProductsList() {
   const [category, setCategory] = useState("all");
   return (
@@ -10,6 +11,7 @@ export default function ProductsList() {
       <Categories
         categorySelected={(categoryName) => setCategory(categoryName)}
       />
+      <Products />
       <PaginationPage categorySelected={category} />
     </div>
   );
