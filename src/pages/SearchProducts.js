@@ -15,7 +15,7 @@ export default function SearchProducts() {
   }, [params]);
 
   return (
-    <div className="container-fluid px-5 py-4">
+    <div className="container-fluid px-5 py-4 mt-5">
       <div className="row d-flex justify-content-evenly align-items-center flex-wrap">
         {products.map((product, index) => (
           <Product key={index} data={product} />
