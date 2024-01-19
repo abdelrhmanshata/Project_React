@@ -79,16 +79,10 @@ export default function ShowProduct() {
                         <div className="row">
                             <p className="text-success rounded-pill text-light p-1 text-center" style={{ width: product.stock < 40 ? "110px" : "85px", backgroundColor: product.stock < 40 ? "red" : "green" }}> {product.stock < 40 ? "Out Of Stock" : "In Stock"}</p>
 
-                            {/* {product.stock < 40 ? (
-                                <p className="text-success rounded-pill text-light p-1 text-center" style={{ width: "110px", backgroundColor: "red" }}> Out Of Stock </p>
-
-                            ) : (
-                                <p className="text-success rounded-pill text-light p-1 text-center" style={{ width: "85px", backgroundColor: "green" }}>   In stock </p>
-                            )} */}
+                            
                             <p>More Information</p>
-                            {/* while clicking on the category it goes to the categories page in the specified category */}
+
                             <p className=" rounded-pill  p-1 text-center " style={{ backgroundColor: "#D3D3D3", width: "140px", whiteSpace: "nowrap" }}>{product.category}</p>
-                            {/* while clicking on the brand it goes to the categories page in the specified category */}
 
                             <p className=" rounded-pill  p-1 text-center " style={{ backgroundColor: "#D3D3D3", marginLeft: "25px", width: "140px", whiteSpace: "nowrap" }}>{product.brand}</p>
                             <hr />
@@ -99,7 +93,6 @@ export default function ShowProduct() {
 
                                     {product.stock < 40 ? (
                                         <div>
-                                            {/* <p className="text-success" style={{ width: "110px", backgroundColor: "red" }}> This Item  Out Of Stock </p> */}
                                             <button type="button" className="btn btn-sm rounded-pill">-</button>
                                             <span className="mx-2" style={{ color: "black" }}>0</span>
                                             <button type="button" className="btn btn-sm rounded-pill" >+</button>
