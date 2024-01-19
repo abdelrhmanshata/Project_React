@@ -5,7 +5,6 @@ import Rating from '../components/Rating';
 import { useDispatch } from 'react-redux';
 import { addCart } from '../store/slices/cart';
 
-
 export default function ShowProduct() {
 
     const [product, setProducts] = useState({});
@@ -58,7 +57,7 @@ export default function ShowProduct() {
             <div className="container">
                 <div className="row">
                     <div className="col-md-6">
-                        <img src={`${product.thumbnail}`} alt="..." style={{ height: "600px", width: "600px" }} />
+                        <img src={`${product.thumbnail}`} alt="..." style={{ height: "600px", width: "600px" }} class="img-fluid" />
                     </div>
                     <div className="col-md-6">
                         <h2>{product.title}</h2>
@@ -88,14 +87,14 @@ export default function ShowProduct() {
                             <hr />
                         </div>
                         <div className="row">
-                            <div className="col-md-3 g-2">
-                                <div className="d-flex align-items-center rounded-pill  text-light p-1" style={{ backgroundColor: "#D3D3D3", width: "85px" }}>
+                            <div className="col-md-3 g-1">
+                                <div className="d-flex align-items-center rounded-pill  text-light p-1 mb-3" style={{ backgroundColor: "#D3D3D3", width: "85px" }}>
 
                                     {product.stock < 40 ? (
                                         <div>
-                                            <button type="button" className="btn btn-sm rounded-pill">-</button>
+                                            <button type="button" className="btn btn-sm rounded-pill" disabled>-</button>
                                             <span className="mx-2" style={{ color: "black" }}>0</span>
-                                            <button type="button" className="btn btn-sm rounded-pill" >+</button>
+                                            <button type="button" className="btn btn-sm rounded-pill" disabled>+</button>
                                         </div>
                                     ) : (
                                         <div>
