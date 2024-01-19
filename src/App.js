@@ -1,8 +1,8 @@
 import { BrowserRouter } from "react-router-dom";
 import Header from "./components/Header";
 import Router from "./Router/Router";
-import ProductsContext from "./context/products";
 import { useState } from "react";
+import ProductsContext from "./context/products";
 
 function App() {
   const [productsDetails, setProductsDetails] = useState({

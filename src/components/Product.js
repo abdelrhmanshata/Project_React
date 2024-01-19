@@ -27,7 +27,7 @@ export default function Product({ data }) {
             alt="ProductImg Not Found"
             style={{ width: "100%", height: "100%" }}
             onClick={() => {
-              navigate(`/details/${data.id}`);
+              navigate(`/show-products/${data.id}`);
             }}
           />
         </div>
