@@ -16,13 +16,15 @@ export default function Cart() {
   return (
     <>
     {productsCart.length === 0 ? (
-      <div className="container">
+      <div className="container mt-5">
+        <br/>
         <div className="bg-primary mx-auto w-50 text-white p-5 my-5 text-center">
           <h2>Your cart is empty</h2>
         </div>
       </div>
     ) : (
       <>
+      <br/>
         <h2 style={{ marginLeft: '7rem' }} className='mt-5 mb-5'>Cart</h2>
         <div className=' mb-5 d-flex '>
           <div>
