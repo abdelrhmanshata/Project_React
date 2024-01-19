@@ -1,11 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { navbarStyle, navbarLinkStyle } from "../styles/navbar";
 import { BiSolidCartAlt } from "react-icons/bi";
 import { useSelector } from "react-redux";
 export default function Header() {
   const productsCart = useSelector((state) => state.cart.productsCart);
+  const navigate = useNavigate();
   return (
-    <nav className="navbar navbar-expand-lg navbar-light" style={navbarStyle}>
+    <nav
+      className="navbar navbar-expand-lg navbar-light"
+      style={{ ...navbarStyle }}
+    >
       <Link
         className="navbar-brand nav-link px-4 text-primary"
         to="/"
@@ -17,7 +21,12 @@ export default function Header() {
         className="d-flex flex-row align-items-center justify-content-center"
         style={{ position: "absolute", right: "0", marginRight: "20px" }}
       >
-        <BiSolidCartAlt style={{ fontSize: "45px" }} />
+        <BiSolidCartAlt
+          style={{ fontSize: "45px" }}
+          onClick={() => {
+            navigate(`/cart-products/`);
+          }}
+        />
         <span
           className="badge badge-light bg-primary"
           style={{
@@ -30,6 +39,7 @@ export default function Header() {
           {productsCart.length}
         </span>
       </div>
+      <br />
     </nav>
   );
 }

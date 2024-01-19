@@ -9,7 +9,7 @@ export default function ShowProduct() {
 
     const [product, setProducts] = useState({});
     const [productQuantatiy, setproductQuantatiy] = useState(1);
-    const [myStock, setMyStock] = useState(8); // Initial stock
+    const [myStock, setMyStock] = useState(8); 
 
     const params = useParams();
     const [productImage, setProductImage] = useState([]);
@@ -54,16 +54,16 @@ export default function ShowProduct() {
     const divident = Math.ceil(product.price * product.discountPercentage / 100);
     return (
         <>
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-6">
+            <div className="container mt-5">
+                <div className="row mt-5">
+                    <div className="col-md-6 mt-5">
                         <img src={`${product.thumbnail}`} alt="..." style={{ height: "600px", width: "600px" }} class="img-fluid" />
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 mt-5">
                         <h2>{product.title}</h2>
                         <p>{product.description}</p>
-                        <div className="row" >
-                            <div className="col-md-3 mb-3" >
+                        <div className="row " >
+                            <div className="col-md-3 mb-3 " >
                                 <Rating rating={product.rating} />
                             </div>
                             <hr />
