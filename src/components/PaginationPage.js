@@ -5,7 +5,6 @@ import ProductsContext from "../context/products";
 
 export default function PaginationPage() {
   const { productsDetails, setProductsDetails } = useContext(ProductsContext);
-
   const [totalProduct, setTotalProduct] = useState(0);
 
   useEffect(() => {
@@ -22,7 +21,6 @@ export default function PaginationPage() {
   }, [productsDetails.category]);
 
   const paginate = (pageNumber) => {
-    // setCurrentPage(pageNumber);
     setProductsDetails({
       category: productsDetails.category,
       page: pageNumber,
